@@ -1,0 +1,9 @@
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+server:
+  port: 9999
+spring:
+  data:
+    mongodb:
+      uri: mongodb://106.14.195.35:27017/coordinate

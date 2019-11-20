@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.azkj.houseproperty.dao.DetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.azkj.houseproperty.entity.Details" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="hid" property="hid" jdbcType="INTEGER" />
+    <result column="mainunit" property="mainunit" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="delatime" property="delatime" jdbcType="TIMESTAMP" />
+    <result column="equity" property="equity" jdbcType="VARCHAR" />
+    <result column="property" property="property" jdbcType="VARCHAR" />
+    <result column="carport" property="carport" jdbcType="VARCHAR" />
+    <result column="decoration" property="decoration" jdbcType="VARCHAR" />
+    <result column="afforest" property="afforest" jdbcType="INTEGER" />
+    <result column="volume" property="volume" jdbcType="INTEGER" />
+    <result column="cost" property="cost" jdbcType="DECIMAL" />
+    <result column="resulturl" property="resulturl" jdbcType="VARCHAR" />
+    <result column="uniturl" property="uniturl" jdbcType="VARCHAR" />
+    <result column="sceneryurl" property="sceneryurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, hid, mainunit, createtime, delatime, equity, property, carport, decoration, afforest, 
+    volume, cost, resulturl, uniturl, sceneryurl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from details
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from details
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.azkj.houseproperty.entity.Details" >
+    insert into details (id, hid, mainunit, 
+      createtime, delatime, equity, 
+      property, carport, decoration, 
+      afforest, volume, cost, 
+      resulturl, uniturl, sceneryurl
+      )
+    values (#{id,jdbcType=INTEGER}, #{hid,jdbcType=INTEGER}, #{mainunit,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{delatime,jdbcType=TIMESTAMP}, #{equity,jdbcType=VARCHAR}, 
+      #{property,jdbcType=VARCHAR}, #{carport,jdbcType=VARCHAR}, #{decoration,jdbcType=VARCHAR}, 
+      #{afforest,jdbcType=INTEGER}, #{volume,jdbcType=INTEGER}, #{cost,jdbcType=DECIMAL}, 
+      #{resulturl,jdbcType=VARCHAR}, #{uniturl,jdbcType=VARCHAR}, #{sceneryurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.azkj.houseproperty.entity.Details" >
+    insert into details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="hid != null" >
+        hid,
+      </if>
+      <if test="mainunit != null" >
+        mainunit,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="delatime != null" >
+        delatime,
+      </if>
+      <if test="equity != null" >
+        equity,
+      </if>
+      <if test="property != null" >
+        property,
+      </if>
+      <if test="carport != null" >
+        carport,
+      </if>
+      <if test="decoration != null" >
+        decoration,
+      </if>
+      <if test="afforest != null" >
+        afforest,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="resulturl != null" >
+        resulturl,
+      </if>
+      <if test="uniturl != null" >
+        uniturl,
+      </if>
+      <if test="sceneryurl != null" >
+        sceneryurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hid != null" >
+        #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="mainunit != null" >
+        #{mainunit,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delatime != null" >
+        #{delatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="equity != null" >
+        #{equity,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="carport != null" >
+        #{carport,jdbcType=VARCHAR},
+      </if>
+      <if test="decoration != null" >
+        #{decoration,jdbcType=VARCHAR},
+      </if>
+      <if test="afforest != null" >
+        #{afforest,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="resulturl != null" >
+        #{resulturl,jdbcType=VARCHAR},
+      </if>
+      <if test="uniturl != null" >
+        #{uniturl,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneryurl != null" >
+        #{sceneryurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.azkj.houseproperty.entity.Details" >
+    update details
+    <set >
+      <if test="hid != null" >
+        hid = #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="mainunit != null" >
+        mainunit = #{mainunit,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delatime != null" >
+        delatime = #{delatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="equity != null" >
+        equity = #{equity,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        property = #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="carport != null" >
+        carport = #{carport,jdbcType=VARCHAR},
+      </if>
+      <if test="decoration != null" >
+        decoration = #{decoration,jdbcType=VARCHAR},
+      </if>
+      <if test="afforest != null" >
+        afforest = #{afforest,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null" >
+        volume = #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="resulturl != null" >
+        resulturl = #{resulturl,jdbcType=VARCHAR},
+      </if>
+      <if test="uniturl != null" >
+        uniturl = #{uniturl,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneryurl != null" >
+        sceneryurl = #{sceneryurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.azkj.houseproperty.entity.Details" >
+    update details
+    set hid = #{hid,jdbcType=INTEGER},
+      mainunit = #{mainunit,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      delatime = #{delatime,jdbcType=TIMESTAMP},
+      equity = #{equity,jdbcType=VARCHAR},
+      property = #{property,jdbcType=VARCHAR},
+      carport = #{carport,jdbcType=VARCHAR},
+      decoration = #{decoration,jdbcType=VARCHAR},
+      afforest = #{afforest,jdbcType=INTEGER},
+      volume = #{volume,jdbcType=INTEGER},
+      cost = #{cost,jdbcType=DECIMAL},
+      resulturl = #{resulturl,jdbcType=VARCHAR},
+      uniturl = #{uniturl,jdbcType=VARCHAR},
+      sceneryurl = #{sceneryurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

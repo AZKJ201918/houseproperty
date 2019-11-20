@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.azkj.houseproperty.dao.WxuserMapper" >
+  <resultMap id="BaseResultMap" type="com.azkj.houseproperty.entity.Wxuser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="wxname" property="wxname" jdbcType="VARCHAR" />
+    <result column="wximg" property="wximg" jdbcType="VARCHAR" />
+    <result column="superiorid" property="superiorid" jdbcType="VARCHAR" />
+    <result column="unionid" property="unionid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, openid, wxname, wximg, superiorid, unionid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wxuser
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wxuser
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.azkj.houseproperty.entity.Wxuser" >
+    insert into wxuser (id, uuid, openid, 
+      wxname, wximg, superiorid, 
+      unionid)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{wxname,jdbcType=VARCHAR}, #{wximg,jdbcType=VARCHAR}, #{superiorid,jdbcType=VARCHAR}, 
+      #{unionid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.azkj.houseproperty.entity.Wxuser" >
+    insert into wxuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="wxname != null" >
+        wxname,
+      </if>
+      <if test="wximg != null" >
+        wximg,
+      </if>
+      <if test="superiorid != null" >
+        superiorid,
+      </if>
+      <if test="unionid != null" >
+        unionid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxname != null" >
+        #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="wximg != null" >
+        #{wximg,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorid != null" >
+        #{superiorid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.azkj.houseproperty.entity.Wxuser" >
+    update wxuser
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxname != null" >
+        wxname = #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="wximg != null" >
+        wximg = #{wximg,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorid != null" >
+        superiorid = #{superiorid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.azkj.houseproperty.entity.Wxuser" >
+    update wxuser
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      wxname = #{wxname,jdbcType=VARCHAR},
+      wximg = #{wximg,jdbcType=VARCHAR},
+      superiorid = #{superiorid,jdbcType=VARCHAR},
+      unionid = #{unionid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
