@@ -4,6 +4,7 @@ import com.azkj.houseproperty.common.exception.PropertyExcption;
 import com.azkj.houseproperty.common.utils.MongodbUtil;
 import com.azkj.houseproperty.dao.DesignMapper;
 import com.azkj.houseproperty.dao.DetailsMapper;
+import com.azkj.houseproperty.dao.HabitableMapper;
 import com.azkj.houseproperty.dao.HouseMapper;
 import com.azkj.houseproperty.entity.Coordinates;
 import com.azkj.houseproperty.entity.Details;
@@ -33,6 +34,9 @@ public class HouseServiceImpl implements HouseService {
     @Autowired
     private MongodbUtil mongodbUtil;
 
+    @Autowired
+    private HabitableMapper habitableMapper;
+
 
     @Override
     public List<House> SelectHoust() throws PropertyExcption{
@@ -46,6 +50,7 @@ public class HouseServiceImpl implements HouseService {
                 parm->{
                     parm.setDesignList(designMapper.selectDesign(id));
                     parm.setPiont(mongodbUtil.SelectPiont(id).Coordinates());
+                    parm.setHabitableList(habitableMapper.SelectHabitable(id));
                 }
         );
 
@@ -54,7 +59,7 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
-    public List<House> CheckAttachment(Piont piont) throws PropertyExcption {
+    public List<House>  CheckAttachment(Piont piont) throws PropertyExcption {
         List<Coordinates> coordinates=mongodbUtil.findthenear(piont);
         if(!CollectionUtils.isNotEmpty(coordinates)){
             throw  new PropertyExcption(400,"附近没有房产");

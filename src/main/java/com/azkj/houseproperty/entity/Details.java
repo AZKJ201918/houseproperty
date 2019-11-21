@@ -39,6 +39,9 @@ public class Details {
 
     private List<Design> designList;
 
+
+    private List<Habitable> habitableList;
+
     private Piont piont;
 
 }
